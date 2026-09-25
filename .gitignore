@@ -1,0 +1,16 @@
+# Segredos
+.env
+
+# Saídas geradas (arte fica fora do git; commite só o que quiser versionar)
+output/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# OS
+.DS_Store
