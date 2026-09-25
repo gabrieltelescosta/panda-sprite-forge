@@ -52,6 +52,26 @@ python -m forge.cli pixelate --input output/panda_idle.png --downscale 64 --prev
 Flags úteis: `--size` (1024x1024 / 1024x1536 / 1536x1024), `--quality`
 (low/medium/high), `-n` (variações), `--opaque` (fundo opaco), `--dry-run`.
 
+## Usando pelo Codex (CLI)
+
+A gente usa este repo direto pelo **Codex** no terminal: abre o Codex na pasta e pede o
+sprite em português ("gera um idle do panda respirando", "repinta esse atlas mantendo as
+poses"). O Codex lê o [`AGENTS.md`](AGENTS.md) — as instruções de operação do repo — e
+traduz o pedido num comando do `forge`.
+
+```bash
+cd panda-sprite-forge
+codex            # abre o agente na pasta; ele já conhece os comandos pelo AGENTS.md
+```
+
+Dá pra rodar tudo na mão também (seção **Uso** acima); o Codex só automatiza isso. Pontos de
+atenção ao dirigir pelo agente:
+
+- **Chave:** garanta a `OPENAI_API_KEY` no `.env` antes — o agente não inventa a chave.
+- **Rede + custo:** `generate`/`edit` batem na API e custam por imagem. Deixe o Codex rodar
+  com acesso à rede liberado e confirme o comando antes de gastar. Use `--dry-run` pra revisar
+  o prompt sem chamar a API.
+
 ## Como encaixa no panda-idle
 
 O `gpt-image-1` **não** gera 900×800 nativo — ele devolve uma imagem grande.
@@ -81,6 +101,7 @@ panda-sprite-forge/
 │       └── panda.md      # arte-direção do herói panda
 ├── requirements.txt
 ├── .env.example
+├── AGENTS.md             # instruções de operação pro Codex / agentes de CLI
 └── output/               # gerado (gitignored)
 ```
 
